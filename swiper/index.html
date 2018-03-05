@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script type="text/javascript">
+			(function (doc, win) {
+		       var docEl = doc.documentElement,
+		           resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+		           //orientationchange 事件是在用户水平或者垂直翻转设备（即方向发生变化）时触发的事件。
+		           //resize事件是屏幕缩放时候触发的事件
+		           recalc = function () {
+		               var clientWidth = docEl.clientWidth;
+		               if (!clientWidth) return;
+		               if(clientWidth>=640){
+		                   docEl.style.fontSize = '100px';
+		               }else{
+		                   docEl.style.fontSize = clientWidth / 3.2 + 'px';
+		               }
+		           };
+		       if (!doc.addEventListener) return;
+		       win.addEventListener(resizeEvt, recalc, false);
+		       doc.addEventListener('DOMContentLoaded', recalc, false);
+		   })(document, window);
+		</script>
+		<link rel="stylesheet" type="text/css" href="css/swiper-3.3.1.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/main.css"/>
+	</head>
+	<body>
+		<div class="logo">
+			<img class="fadeIn" src="img/mc.png"/>
+		</div>
+		<div class="swiper-container swiper">
+		    <div class="swiper-wrapper">
+		        <div class="swiper-slide slide animated page">
+		        	<div class="content">
+		        		<div class="content-center">
+		        			<img class="topic zoomIn" src="img/t01_1.png"/>
+		        			<img class="sub-txt slideInUp" src="img/t01_2.png"/>
+		        		</div>
+		        		<img class="arr-down downUp" src="img/arr_d.png"/>
+		        	</div>
+		        </div>
+		        <div class="swiper-slide slide slide2 page">
+		        	<div class="content">
+		        		<div class="content-center">
+		        			<img class="t021 slideInDown" src="img/t02_1.png"/>
+		        			<img class="t022" src="img/t02_2.png"/>
+		        			<img class="t023 slideInUp" src="img/t02_3.png"/>
+		        		</div>
+		        		<img class="arr-down downUp" src="img/arr_d.png"/>
+		        		<p>（来源：汽车头条自媒体影响力指数2017年7月榜单）</p>
+		        	</div>
+		        </div>
+		        <div class="swiper-slide slide slide2 page">
+		        	<div class="content">
+		        		<div class="content-center">
+		        			<div class="t03">
+		        				<img class="t03_1 slideInLeft" src="img/t03_1.png"  /><img class="t03_2 fadeIn1" src="img/t03_2.png" /><img class="t03_3 slideInLeft1" src="img/t03_3.png" />
+		        			</div>
+		        			<img class="t03_4 fadeIn1" src="img/t03_4.png"/>
+		        		</div>
+		        		<img class="arr-down downUp" src="img/arr_d.png"/>
+		        	</div>
+		        </div>
+		        <div class="swiper-slide slide slide2 animated page">
+		        	<div class="content">
+		        		<div class="content-center">
+		        			<img class="t051 slideInDown" src="img/t05_1.png"/>
+		        			<img class="t052 slideInUp" src="img/t05_2.png"/>
+		        		</div>
+		        		<img class="arr-down downUp" src="img/arr_d.png"/>
+		        	</div>
+		        </div>
+		        <div class="swiper-slide slide slide2 animated page">
+		        	<div class="content">
+		        		<div class="content-center">
+		        			<img class="t061 slideInDown" src="img/t06_1.png"/>
+		        			<img class="t062 slideInUp" src="img/t06_2.png"/>
+		        		</div>
+		        		<img class="arr-down downUp" src="img/arr_d.png"/>
+		        	</div>
+		        </div>
+		        <div class="swiper-slide slide slide2 animated page">
+		        	<div class="content">
+		        		<div class="content-center">
+		        			<img class="t071 slideInDown" src="img/t07_1.png"/>
+		        			<img class="t072 slideInUp" src="img/t07_2.png"/>
+		        		</div>
+		        		<img class="arr-down downUp" src="img/arr_d.png"/>
+		        	</div>
+		        </div>
+		        <div class="swiper-slide slide slide2 animated page">
+		        	<div class="content">
+		        		<div class="content-center">
+		        			<img class="t081 slideInDown" src="img/t08_1.png"/>
+		        			<div class="m">
+		        				<div class="matrix rotateIn"></div>
+		        				<div class="m01 fadeIn01"></div>
+		        				<div class="m02 fadeIn02"></div>
+		        				<div class="m03 fadeIn03"></div>
+		        				<div class="m04 fadeIn04"></div>
+		        				<div class="m05 fadeIn05"></div>
+		        			</div>
+		        		</div>
+		        		<img class="arr-down downUp" src="img/arr_d.png"/>
+		        	</div>
+		        </div>
+		    </div>
+		</div>
+	</body>
+</html>
+<script src="lib/jquery-3.0.0.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/swiper-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	 var mySwiper = new Swiper ('.swiper', {
+			direction : 'vertical',
+			speed:1000,
+			onSlideChangeEnd: function(swiper){
+				var  index=swiper.activeIndex;
+				console.log(index)
+				$(".page").eq(index).addClass("animated").siblings(".page").removeClass("animated");
+			   
+		    }
+	  })  
+</script>
