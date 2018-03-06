@@ -1,159 +1,179 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 
-	<head>
-		<meta charset="utf-8" />
-		<title>首页</title>
-		<meta name="description" content="Dashboard" />
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<!--Basic Styles-->
-		<link rel="stylesheet" href="Content/plugins/layui/css/layui.css">
-		<link rel="stylesheet" href="Content/css/common.css" />
-	</head>
+<head>
+    <title>管理系统</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<body class="index">
-		<div class="navbar header">
-			<div class="navbar-inner hd-bg">
-				<div class="navbar-container clearfix">
-					<div class="fl pull-left">
-						<a class="navbar-brand logo" onClick="logoClick()">
-							<small>
-                            <img src="./Content/css/Common/icons/logo.png" alt=""/>
-                            <span>易销售管理系统</span> 
-                        </small>
-						</a>
-					</div>
-					<div id="sidebar-collapse" class="sidebar-collapse">
-						<img src="./Content/css/Common/icons/homeColumn.png" alt="" />
-					</div>
-					<div class="pull-right hd-right fr">
-						<p>
-							<span>你好，张三</span>
-							<a onClick="ChangePass()">[修改密码]</a>
-							<a onClick="Exit()">[退出]</a>
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
+    <!-- <link rel="icon" href="favicon.ico"> -->
+    <!--插件  -->
+    <link rel="stylesheet" href="css/bootstrap.css">
 
-		<div class="main-container container-fluid">
-			<div class="page-container">
-				<div class="page-sidebar" id="sidebar">
-					<ul class="sidebar-menu nav nav-pills nav-stacked nav-bracket">
-						<li>
-							<a class="menu-dropdown">
-								<img class="margin-top-10" src="Content/img/check1.png" alt="" />
-								<span class="menu-text">1.0房源视频管理</span>
-								<i class="layui-icon menu-expand"></i>
-							</a>
-							<ul class="submenu">
-								<li>
-									<a id="11000_manage" url="1.1.html" title="视频添加" addtabs="11000_manage">
-										<span class="menu-text">1.1视频添加</span>
-									</a>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<a id="20000_manage" url="2.0.html" title="房源视频管理" addtabs="20000_manage">
-								<img class="margin-top-10" src="Content/img/check2.png" alt="" />
-								<span class="menu-text">2.0房源视频管理</span>
-							</a>
-						</li>
-					</ul>
-				</div>
+    <!--插件——动画  -->
+    <link rel="stylesheet" href="css/animate.css">
 
-				<div class="page-content" id="content">
-					<div class="tabs-list">
-						<ul class="nav nav-tabs nav-dark" id="navcontextmenu" data-toggle="context" data-target="#context-menu"></ul>
-					</div>
-					<div id="tab-Content" class="tab-content"></div>
-				</div>
-			</div>
-		</div>
+    <!--插件——字体库  -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
 
-		<div class="navbar-fixed-bottom footer">
-			<p class="footer">©Copyright 2016-2017 QK365.com All rights reserved
-				<p>
-		</div>
+    <!--插件——加载进度条  -->
+    <link rel="stylesheet" href="css/plugins/nprogress/nprogress.css">
 
-		<!--弹框，退出-->
-		<div class="layer-exit hide">
-			<div class="layer-exit-con">
-				<p class="title">确定要退出么？</p>
-				<span class="text">如果是点击“确定”,否则点击“取消”</span>
-			</div>
-		</div>
-		<!--弹框，修改密码-->
-		<div class="layer-password hide">
-			<div class="layer-password-con">
-				<div class="input-item">
-					<span><b class="require red">*</b>原密码：</span>
-					<input class="originPass" type="text" placeholder="请输入用户名" />
-				</div>
-				<div class="input-item">
-					<span><b class="require red">*</b>新密码：</span>
-					<input class="newPass" type="text" placeholder="请输入用户名" />
-				</div>
-				<div class="input-item">
-					<span><b class="require red">*</b>确认密码：</span>
-					<input class="surePass" type="text" placeholder="请输入用户名" />
-				</div>
-				<p class="alertText red"></p>
-			</div>
-		</div>
+    <!--插件——侧边栏导航  -->
+    <link rel="stylesheet" href="css/plugins/metisMenu/metisMenu.css">
 
-		<!--Basic Scripts-->
-		<script src="Content/js/jquery-2.0.3.min.js"></script>
-		<script src="Content/js/skins.min.js"></script>
-		<script src="Content/js/bundle.js"></script>
-		<script src="Content/plugins/layui/layui.js"></script>
-		<!--Tabs-->
-		<script src="Content/js/tabs.js"></script>
+    <!--自定义  -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
 
-		<script>
-			function Exit() {
-				layui.use('layer', function() {
-					var $ = layui.jquery,
-						layer = layui.layer;
-					layer.open({
-						title: '提示信息',
-						content: $('.layer-exit').html(),
-						area: ['350px', ''],
-						btn: ['确定', '取消'],
-						yes: function(index) {
-							layer.close(index);
-						}
-					});
-				})
-			}
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <i id="sideClose" class="fa fa-bars fa-lg"></i>
+            <span class="logo-title">管理系统</span>
+            <div class="pull-right user">
+                <span class="fa fa-user fa-lg"></span>
+                <span class="fa fa-angle-down fa-lg"></span>
+                <div class="user-info" style="display:none;">
+                    <div class="user-title">用户信息：Admin</div>
+                    <button class="btn btn-default">公司简介</button>
+                    <button class="btn btn-default">退出登录</button>
+                </div>
+            </div>
+        </header>
+        <!--左侧导航-->
+        <nav class="navbar-default navbar-static-side">
+            <div class="sidebar-nav">
+                <ul class="metismenu" id="menu">
+                    <li class="active">
+                        <a class="has-arrow" href="javascript:;" aria-expanded="false">
+                            <span class="fa fa-fw fa-th-large"></span>
+                            <span class="menu-title">表格</span>
+                        </a>
+                        <ul class="collapse" aria-expanded="true">
+                            <li><a href="tableBasic.html">查询</a></li>
+                            <li><a href="tableFixed.html">表格</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="has-arrow" href="javascript:;" aria-expanded="false">
+                            <span class="fa fa-fw fa-file"></span>
+                            <span class="menu-title">表单</span>
+                        </a>
+                        <ul class="collapse" aria-expanded="false">
+                            <li>
+                                <a class="has-arrow" href="javascript:;">表单控件</a>
+                                <ul class="collapse" aria-expanded="false">
+                                    <li><a href="formTime.html">时间控件</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="formEchart.html">Echart</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="has-arrow" href="index1.html" aria-expanded="false">
+                            <span class="fa fa-fw fa-user"></span>
+                            <span class="menu-title">用户探索</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!--右侧文本区-->
+        <div class="wrapper-page">
 
-			function ChangePass() {
-				$('.alertText').text('用户名错误');
-				layui.use('layer', function() {
-					var $ = layui.jquery,
-						layer = layui.layer;
-					layer.open({
-						title: '修改密码',
-						content: $('.layer-password').html(),
-						area: ['350px', ''],
-						btn: ['确定', '取消'],
-						yes: function(index) {
-							if($('.originPass').val() == '') {
-								$('.alertText').text('原密码不能为空');
-							}
-						}
-					});
-				})
-			}
+            <!--tab-->
+            <button id="scrollTabLeft" class="btn btn-default btn-left">
+                    <span class="glyphicon glyphicon-backward"></span>
+                </button>
+            <div class="content-tabs">
+                <nav class="page-tabs menuTabs">
+                    <div class="page-tabs-content">
+                        <a href="javascript:;" class="menuTab active" data-id="tableBasic.html">基础表格</a>
+                        <a href="javascript:;" class="menuTab" data-id="tableFixed.html">固定表头
+                            <i class="fa fa-remove"></i>
+                        </a>
+                    </div>
+                </nav>
+            </div>
+            <button id="scrollTabRight" class="btn btn-default pull-right btn-right">
+                    <span class="glyphicon glyphicon-forward"></span>
+                </button>
+            <div class="dropdown">
+                <a id="dLabel" class="btn-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    页签操作
+    <span class="caret"></span>
+  </a>
+                <ul class="dropdown-menu" aria-labelledby="dLabel">
+                    <li class="tabFresh">当前页刷新</li>
+                    <li class="tabCloseOther">除此页全部关闭</li>
+                    <li class="tabCloseAll">全部关闭</li>
+                </ul>
+            </div>
+            <!--iframe主体  -->
+            <div class="content" id="content">
+                <iframe id="iframe" class="iframe" width="100%" height="100%" src="tableBasic.html" data-id='tableBasic.html' frameborder="0"></iframe>
+                <iframe id="iframe1" class="iframe" width="100%" height="100%" src="tableFixed.html" data-id='tableFixed.html' frameborder="0" style="display:none;"></iframe>
+            </div>
+        </div>
+    </div>
 
-			function logoClick() {
-				$('#tab_tab_home_manage').addClass('active').click();
-			}
-		</script>
+    <!--插件-->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 
-	</body>
+    <!--插件——侧边栏导航  -->
+    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+
+    <!--自定义JS  -->
+    <script src="js/tab.js"></script>
+
+    <script>
+        $(function() {
+            //调用侧边栏插件
+            $("#menu").metisMenu();
+            $('.sidebar-nav').slimScroll({
+                height: '100%',
+                railOpacity: 0.9,
+                alwaysVisible: false
+            });
+            $(".user").hover(function() {
+                $('.user-info').toggle().addClass('animated fadeIn');
+            });
+           
+                //左侧导航条收缩
+            $('#sideClose').on('click', function() {
+                if ($('.navbar-default').hasClass('side-close')) {
+                    $('.navbar-default').removeClass('side-close');
+                } else {
+                    $('.navbar-default').addClass('side-close');
+                }
+                if ($('.wrapper-page').hasClass('page-close')) {
+                    $('.wrapper-page').removeClass('page-close');
+                } else {
+                    $('.wrapper-page').addClass('page-close');
+                }
+                $('.metismenu li').each(function() {
+                    if ($(this).hasClass('active')) {
+                        $(this).children('.has-arrow').removeClass('active1');
+                        $(this).children('.collapse').removeClass('in').attr('aria-expanded', 'false');
+                        if ($(this).children('.collapse').children('li').hasClass('active')) {
+                            $(this).children('.collapse').children('li').removeClass('active');
+                            $(this).children('.collapse').children('li').children('.has-arrow').removeClass('active1');
+                            $(this).children('.collapse').children('li').children('.collapse').removeClass('in').attr('aria-expanded', 'false');
+                        }
+                    }
+                });
+            });
+            //侧边栏
+            $(".metismenu li a").on("click", function() {
+                $(".metismenu li a").removeClass('active1');
+                $(this).addClass("active1");
+                return false;
+            });
+
+        });
+    </script>
+</body>
 
 </html>
